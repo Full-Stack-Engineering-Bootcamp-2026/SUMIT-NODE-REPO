@@ -1,15 +1,15 @@
 const original = {
-    name:'unknown',
+    name: 'unknown',
     age: 0,
     id: 0
-
 };
- 
-console.log(original);
 
-const copyOriginal = {...original , gender : "NA"};// created a shallow copy of a object
-// added some addtional property to the copied object and then printed it .
-console.log(copyOriginal);
+const copy = original; 
+
+copy.name = "Sumit"; 
+
+console.log(original);
+console.log(copy);
 
 const num1 = [1,2,3,4,5];
 console.log(num1);
