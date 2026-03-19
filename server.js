@@ -27,7 +27,7 @@ const server = http.createServer((req, res) => {
         res.end("<h1>Home page</h1> <a href = '/about'>About</a>");
     }
 
-    // TIME - GET (JSON)
+    // time json 
     else if (req.url === "/time" && req.method === "GET") {
         res.writeHead(200, { "Content-Type": "application/json" });
         res.end(JSON.stringify({
