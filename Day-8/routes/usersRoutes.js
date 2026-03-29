@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-
 router.get("/", (req, res) => {
     const { name, age } = req.query;
 
@@ -10,10 +9,9 @@ router.get("/", (req, res) => {
         data: {
             name,
             age,
-        },
+        }
     });
 });
-
 
 router.post("/", (req, res) => {
     const { name, email } = req.body;
