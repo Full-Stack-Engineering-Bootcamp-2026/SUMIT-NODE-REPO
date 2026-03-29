@@ -1,32 +1,32 @@
-const path = require('path')
-const express = require('express');
+const express = require("express");
+
 const app = express();
-const bodyParser = require('body-parser');
-const userRoutes = require('./routes/users');
-const productRoutes = require('./routes/products');
 
 
-app.use(bodyParser.urlencoded({extended : false }));
-app.use(userRoutes);
-app.use(productRoutes);
-app.use((req,res,next)=>{
-    console.log("Welcome")
+app.use((req, res, next) => {
+    console.log(`the method used is : ${req.method} ,
+        The URL is : ${req.url}`);
     next();
 });
 
-app.use('/',(req,res,next)=>{
-    console.log("The route method is :",req.method);
-    console.log("the route used is ",req.url);  
+app.use((req, res, next) => {
+    console.log("Welcome to Express App ");
     next();
 });
 
-app.use((req,res,next)=>{
-    res.send("<h1>Welcome to express js</h1>");
-})
-    
-app.listen(3000);
+app.get("/", (req, res) => {
+    res.send("Home Page");
+});
+
+app.get("/users", (req, res) => {
+    res.send("Users Page");
+});
+
+app.get("/products", (req, res) => {
+    res.send("Products Page");
+});
 
 
-
-
-
+app.listen(3000, () => {
+    console.log(`Server running on http://localhost:3000`);
+});
