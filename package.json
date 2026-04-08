@@ -14,9 +14,19 @@
     "ejs": "^5.0.1",
     "express": "^5.2.1",
     "mysql2": "^3.20.0",
-    "pug": "^3.0.4"
+    "pug": "^3.0.4",
+    "sequelize": "^6.37.8"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Full-Stack-Engineering-Bootcamp-2026/SUMIT-NODE-REPO.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Full-Stack-Engineering-Bootcamp-2026/SUMIT-NODE-REPO/issues"
+  },
+  "homepage": "https://github.com/Full-Stack-Engineering-Bootcamp-2026/SUMIT-NODE-REPO#readme"
 }
