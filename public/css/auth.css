@@ -1,0 +1,25 @@
+.login-form {
+  width: 90%;
+  max-width: 40rem;
+  margin: 2rem auto;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 6px;
+  background: white;
+}
+
+.user-message {
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+  width: 90%;
+  max-width: 40rem;
+}
+
+.user-message--error {
+  background-color: rgb(255, 237, 237);
+  color: rgb(138, 7, 7);
+  border: 1px solid rgb(138, 7, 7);
+}

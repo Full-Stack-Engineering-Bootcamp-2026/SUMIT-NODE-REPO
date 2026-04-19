@@ -10,15 +10,15 @@ exports.getAddProduct = (req, res, next) => {
     });
 }
 
-exports.postAddProduct = (req, res, next) => {
-    //    products.push({ title: req.body.title });
+exports.postAddProduct = async(req, res, next) => {
     const product = new Product(req.body.title);
-    product.save();
+    await product.save();
     res.redirect('/');
 }
 
-exports.getProducts = (req, res, next) => {
-    Product.fetchAll(products => {
+exports.getProducts = async (req, res, next) => {
+    try {
+        const products = await Product.fetchAll();
         res.render('shop', {
             prods: products,
             pageTitle: 'Shop',
@@ -27,6 +27,9 @@ exports.getProducts = (req, res, next) => {
             activeShop: true,
             productCSS: true
         })
-    })
-
+    }
+    catch(err){
+        console.log(err);
+    }
+    
 }
