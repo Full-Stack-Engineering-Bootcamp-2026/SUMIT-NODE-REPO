@@ -64,4 +64,3 @@ userSchema.methods.clearCart = function() {
 };
 
 module.exports = mongoose.model('User', userSchema);
-

@@ -158,12 +158,14 @@ exports.getProducts = async (req, res, next) => {
       path: '/admin/products'
     });
   }
+  
     catch(err){
       const error = new Error(err);
       error.httpStatusCode = 500;
       return next(error);
     };
 };
+
 
 exports.postDeleteProduct = async (req, res, next) => {
   const prodId = req.body.productId;
