@@ -4,14 +4,14 @@ import Post from "../models/post.models.js";
 @Service()
 export class FeedService {
   async getPosts() {
-    const posts = await Post.find();
-    return posts;
+    return await Post.find();
   }
+
   async createPost(
-    title: String,
-    imageUrl: String,
-    content: String,
-    creator: String,
+    title: string,
+    imageUrl: string,
+    content: string,
+    creator: string,
   ) {
     const post = new Post({
       title,
@@ -19,15 +19,14 @@ export class FeedService {
       content,
       creator,
     });
-    const result = await post.save();
-    return result;
+    return await post.save();
   }
 
   async getPostById(id: string) {
     const post = await Post.findById(id);
     if (!post) {
-      const error = new Error("No post with that id");
-      error.message = "Not found";
+      const error: any = new Error("Not found");
+      error.statusCode = 404;
       throw error;
     }
     return post;

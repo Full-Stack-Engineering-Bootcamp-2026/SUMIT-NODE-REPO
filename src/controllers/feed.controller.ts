@@ -1,10 +1,10 @@
 import { Container } from "typedi";
 import { FeedService } from "../service/feed.service.js";
-import "reflect-metadata";
 import { Request, Response, NextFunction } from "express";
 
 class FeedController {
   private feedService = Container.get(FeedService);
+
   async getPosts(req: Request, res: Response, next: NextFunction) {
     try {
       const posts = await this.feedService.getPosts();
@@ -12,28 +12,25 @@ class FeedController {
         message: "Fetched successfully",
         posts,
       });
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        next(err);
-      } else {
-        next(new Error(" error occurred"));
-      }
+    } catch (err) {
+      next(err);
     }
   }
+
   async getPost(
-    req: Request<{ id: string }>,
+    req: Request<{ postId: string }>,
     res: Response,
-    next: NextFunction,
+    next: NextFunction
   ) {
     try {
-      const id = req.params.id;
+      const id = req.params.postId;
       const post = await this.feedService.getPostById(id);
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        next(err);
-      } else {
-        next(new Error("error occurred"));
-      }
+      res.status(200).json({
+        message: "Post fetched",
+        post,
+      });
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -44,18 +41,14 @@ class FeedController {
         title,
         imageUrl,
         content,
-        creator,
+        creator
       );
       res.status(201).json({
         message: "Post created",
         post,
       });
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        next(err);
-      } else {
-        next(new Error(" error occurred"));
-      }
+    } catch (err) {
+      next(err);
     }
   }
 }

@@ -1,4 +1,3 @@
-import { required } from "joi";
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
@@ -17,11 +16,12 @@ const postSchema = new Schema(
       required: true,
     },
     creator: {
-      type: Object,
-      required: String,
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
 export default mongoose.model("Post", postSchema);
